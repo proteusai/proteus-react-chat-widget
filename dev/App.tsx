@@ -38,8 +38,8 @@ export default class App extends Component {
         handleNewUserMessage={this.handleNewUserMessage}
         handleQuickButtonClicked={this.handleQuickButtonClicked}
         imagePreview
-        primaryColor='grey'
-        secondaryColor='lightblue'
+        primaryColor='#012'
+        secondaryColor='linear-gradient(to right, #4285F4, #A92FFF, #FFDD67)'
       />
     );
   }

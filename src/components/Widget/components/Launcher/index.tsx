@@ -7,8 +7,8 @@ import { setBadgeCount } from '../../../../store/actions';
 
 import './style.scss';
 
-const openLauncher = require('../../../../../assets/launcher_button.svg') as string;
-const close = require('../../../../../assets/close.svg') as string;
+const openLauncher = require('../../../../../assets/bot-icon-logo.svg') as string;
+const close = require('../../../../../assets/bot-close.svg') as string;
 
 type Props = {
   toggle: () => void;
@@ -18,9 +18,14 @@ type Props = {
   closeImg: string;
   openImg: string;
   showBadge?: boolean;
+  launcherText?: string;
 }
-
-function Launcher({ toggle, chatId, openImg, closeImg, openLabel, closeLabel, showBadge }: Props) {
+/**
+ * Chat widget launcher, accepts parameters to configure laucher.
+ * @param param0 
+ * @returns 
+ */
+function Launcher({ toggle, chatId, openImg, closeImg, openLabel, closeLabel, showBadge, launcherText }: Props) {
   const dispatch = useDispatch();
   const { showChat, badgeCount } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
@@ -33,13 +38,19 @@ function Launcher({ toggle, chatId, openImg, closeImg, openLabel, closeLabel, sh
   }
 
   return (
-    <button type="button" className={cn('rcw-launcher', { 'rcw-hide-sm': showChat })} onClick={toggleChat} aria-controls={chatId} style={{ "cursor": 'pointer' }}>
-      {!showChat && showBadge && <Badge badge={badgeCount} />}
+    <>
       {showChat ?
-        <img src={closeImg || close} className="rcw-close-launcher" alt={openLabel} /> :
-        <img src={openImg || openLauncher} className="rcw-open-launcher" alt={closeLabel} />
+      <div className='rcw-close-btn' onClick={toggleChat} aria-controls={chatId} style={{ "cursor": 'pointer' }}>
+        <img src={closeImg || close} className="rcw-close-launcher" alt={closeLabel} /> 
+      </div>
+        :
+        <button type="button" className={cn('rcw-launcher', { 'rcw-hide-sm': showChat })} onClick={toggleChat} aria-controls={chatId} style={{ "cursor": 'pointer' }}>
+          {!showChat && showBadge && <Badge badge={badgeCount} />}
+          <span className='text'>{launcherText || `Chat with me`}</span>
+          <img src={openImg || openLauncher} className="rcw-open-launcher" alt={openLabel} />
+        </button>
       }
-    </button>
+    </>
   );
 }
 

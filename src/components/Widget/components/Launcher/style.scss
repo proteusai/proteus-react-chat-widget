@@ -5,28 +5,65 @@
 .rcw-launcher {
   @include animation(0, 0.5s, slide-in);
   align-self: flex-end;
-  background-color: $primary-color;
-  border: 0;
-  border-radius: 50%;
   box-shadow: 0px 2px 10px 1px $grey-3;
-  height: 60px;
-  margin-top: 10px;
   cursor: pointer;
-  width: 60px;
+
+  background-color: $primary-color;
+  border: 1px solid;
+  border-color: #fff;
+  border-radius: 48px;
+  box-shadow: #fff;
+  height: 56px;
+  position: relative;
+  width: 196px;
 
   &:focus {
     outline: none;
   }
 }
 
-.rcw-open-launcher {
-  display: inline !important;
-  @include animation(0, 0.5s, rotation-rl);
+.rcw-launcher .text {
+  color: #ffffff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  left: 16px;
+  letter-spacing: 0px;
+  line-height: 24px;
+  position: absolute;
+  top: 15px;
+  white-space: nowrap;
 }
 
-.rcw-close-launcher {
+.rcw-launcher .rcw-open-launcher {
   display: inline !important;
-  width: 50px;
+  @include animation(0, 0.5s, rotation-rl);
+
+  left: 129px !important;
+  position: absolute !important;
+  top: 4px !important;
+}
+
+
+.rcw-close-btn {
+  border-radius: 48px;
+  height: 56px;
+  width: 48px;
+
+  background-color: transparent !important;;
+  align-self: flex-end;
+  cursor: pointer;
+  position: relative;
+}
+
+.rcw-close-btn .rcw-close-launcher {
   @include animation(0, 0.5s, rotation-lr);
   text-shadow: #FC0 5px 3px 10px;
+
+  height: 40px;
+  left: 12px !important;
+  object-fit: cover;
+  position: absolute;
+  top: 6px;
+  width: 40px;
 }
