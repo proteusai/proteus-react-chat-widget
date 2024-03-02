@@ -22,10 +22,6 @@ type Props = {
   handleTextInputChange?: (event: any) => void;
   chatId: string;
   handleToggle?: AnyFunction;
-  launcherOpenLabel: string;
-  launcherCloseLabel: string;
-  launcherOpenImg: string;
-  launcherCloseImg: string;
   sendButtonAlt: string;
   showTimeStamp: boolean;
   imagePreview?: boolean;
@@ -54,10 +50,6 @@ function Widget({
   handleTextInputChange,
   chatId,
   handleToggle,
-  launcherOpenLabel,
-  launcherCloseLabel,
-  launcherCloseImg,
-  launcherOpenImg,
   sendButtonAlt,
   showTimeStamp,
   imagePreview,
@@ -108,10 +100,6 @@ function Widget({
       customLauncher={customLauncher}
       onTextInputChange={handleTextInputChange}
       chatId={chatId}
-      launcherOpenLabel={launcherOpenLabel}
-      launcherCloseLabel={launcherCloseLabel}
-      launcherCloseImg={launcherCloseImg}
-      launcherOpenImg={launcherOpenImg}
       sendButtonAlt={sendButtonAlt}
       showTimeStamp={showTimeStamp}
       imagePreview={imagePreview}
@@ -120,7 +108,7 @@ function Widget({
       resizable={resizable}
       emojis={emojis}
       primaryColor={primaryColor}
-      secondaryColor={secondaryColor}
+      secondaryColor={secondaryColor} 
     />
   );
 }

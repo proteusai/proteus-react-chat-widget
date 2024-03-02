@@ -3,12 +3,16 @@
 @import 'animation';
 
 .rcw-conversation-container {
-  border-radius: 10px;
-  box-shadow: 0px 2px 10px 1px $grey-3;
   min-width: 400px;
   max-width: 90vw;
   position: relative;
   min-height: 70%;
+  background-color: $primary-color;
+
+  border-radius: 16px;
+  /* Shadow A */
+  box-shadow: 0px 4px 9px 0px rgba(196, 196, 196, 0.10), -2px 17px 17px 0px rgba(196, 196, 196, 0.09), -4px 38px 23px 0px rgba(196, 196, 196, 0.05), -7px 67px 27px 0px rgba(196, 196, 196, 0.01), -11px 105px 30px 0px rgba(196, 196, 196, 0.00);
+
   &.active {
     opacity: 1;
     transform: translateY(0px);

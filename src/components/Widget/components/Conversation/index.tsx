@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Messages from './components/Messages';
 import Sender from './components/Sender';
 import QuickButtons from './components/QuickButtons';
+import Menu from './components/Menu';
 
 import { AnyFunction } from '../../../../utils/types';
 
@@ -135,6 +136,10 @@ function Conversation({
         onPressEmoji={togglePicker}
         onChangeSize={setOffset}
       />
+      {/* <Menu 
+        toggle={() => console.log('toggled')}
+        chatTab='yes'
+      /> */}
     </div>
   );
 }
