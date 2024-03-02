@@ -22,10 +22,6 @@ type Props = {
   handleTextInputChange?: (event: any) => void;
   chatId?: string;
   handleToggle?: AnyFunction;
-  launcherOpenLabel?: string,
-  launcherCloseLabel?: string,
-  launcherCloseImg?: string,
-  launcherOpenImg?: string,
   sendButtonAlt?: string;
   showTimeStamp?: boolean;
   imagePreview?: boolean;
@@ -54,10 +50,6 @@ function ConnectedWidget({
   handleTextInputChange,
   chatId,
   handleToggle,
-  launcherOpenLabel,
-  launcherCloseLabel,
-  launcherCloseImg,
-  launcherOpenImg,
   sendButtonAlt,
   showTimeStamp,
   imagePreview,
@@ -89,10 +81,6 @@ function ConnectedWidget({
         handleTextInputChange={handleTextInputChange}
         chatId={chatId}
         handleToggle={handleToggle}
-        launcherOpenLabel={launcherOpenLabel}
-        launcherCloseLabel={launcherCloseLabel}
-        launcherCloseImg={launcherCloseImg}
-        launcherOpenImg={launcherOpenImg}
         sendButtonAlt={sendButtonAlt}
         showTimeStamp={showTimeStamp}
         imagePreview={imagePreview}
@@ -116,10 +104,6 @@ const defaultProps = {
   fullScreenMode: false,
   autofocus: true,
   chatId: 'rcw-chat-container',
-  launcherOpenLabel: 'Open chat',
-  launcherCloseLabel: 'Close chat',
-  launcherOpenImg: '',
-  launcherCloseImg: '',
   sendButtonAlt: 'Send',
   showTimeStamp: true,
   imagePreview: false,

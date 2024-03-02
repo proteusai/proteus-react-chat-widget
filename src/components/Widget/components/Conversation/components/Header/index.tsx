@@ -1,4 +1,5 @@
 const close = require('../../../../../../../assets/close.svg') as string;
+const openLauncher = require('../../../../../../../assets/bot-icon-logo.svg') as string;
 
 import './style.scss';
 
@@ -18,11 +19,10 @@ function Header({ title, subtitle, toggleChat, showCloseButton, titleAvatar }: P
           <img src={close} className="rcw-close" alt="close" />
         </button>
       }
-      <div className="rcw-title">
-        {titleAvatar && <img src={titleAvatar} className="avatar" alt="profile" />}
-        <span className="title-text">{title}</span>
-        <span className="sub-title-text">{subtitle}</span>
-      </div>
+      <span className="title-text">{title}</span>
+      {/* <span className="sub-title-text">{subtitle}</span> */}
+
+      <img src={titleAvatar || openLauncher} className="avatar" alt="profile" />
     </div>
   );
 }

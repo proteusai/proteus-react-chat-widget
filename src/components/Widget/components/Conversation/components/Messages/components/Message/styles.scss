@@ -6,8 +6,8 @@
   display: flex;
   white-space: pre-wrap;
   word-wrap: break-word;
-  color: $black;
-
+  color:#F2F2F7;
+  
   &-client {
     flex-direction: row-reverse;
   }
@@ -18,13 +18,37 @@
   margin-top: 5px;
 }
 
+.rcw-response {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  color:#F2F2F7;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  .rcw-message-text {
+    @include message-bubble($primary-color);
+  }
+}
+
 .rcw-client {
   display: flex;
   flex-direction: column;
   margin-left: auto;
 
+  color:#F2F2F7;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
   .rcw-message-text {
-    @include message-bubble($secondary-color);
+    @include message-bubble(#0078D3);
 
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -32,16 +56,6 @@
 
   .rcw-timestamp {
     align-self: flex-end;
-  }
-}
-
-.rcw-response {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  .rcw-message-text {
-    @include message-bubble($grey-2);
   }
 }
 

@@ -8,6 +8,7 @@ import { openFullscreenPreview } from '../../store/actions';
 
 import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
+import Menu from './components/Conversation/components/Menu';
 import FullScreenPreview from './components/FullScreenPreview';
 
 import './style.scss';
@@ -28,10 +29,6 @@ type Props = {
   customLauncher?: AnyFunction;
   onTextInputChange?: (event: any) => void;
   chatId: string;
-  launcherOpenLabel: string;
-  launcherCloseLabel: string;
-  launcherCloseImg: string;
-  launcherOpenImg: string;
   sendButtonAlt: string;
   showTimeStamp: boolean;
   imagePreview?: boolean;
@@ -59,10 +56,6 @@ function WidgetLayout({
   customLauncher,
   onTextInputChange,
   chatId,
-  launcherOpenLabel,
-  launcherCloseLabel,
-  launcherCloseImg,
-  launcherOpenImg,
   sendButtonAlt,
   showTimeStamp,
   imagePreview,
@@ -83,8 +76,8 @@ function WidgetLayout({
   const messageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--primary-color', primaryColor || 'purple');
-    document.documentElement.style.setProperty('--secondary-color', secondaryColor || 'indigo');
+    document.documentElement.style.setProperty('--primary-color', primaryColor || '#1A202C'); // black
+    document.documentElement.style.setProperty('--secondary-color', secondaryColor || '#D9D9D9'); // light grey
 
     if(showChat) {
       messageRef.current = document.getElementById('messages') as HTMLDivElement;
@@ -162,10 +155,7 @@ function WidgetLayout({
         <Launcher
           toggle={onToggleConversation}
           chatId={chatId}
-          openLabel={launcherOpenLabel}
-          closeLabel={launcherCloseLabel}
-          closeImg={launcherCloseImg}
-          openImg={launcherOpenImg}
+          openImg={titleAvatar}
           showBadge={showBadge}
         />
       }
