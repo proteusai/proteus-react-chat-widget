@@ -31,7 +31,7 @@
   line-height: normal;
 
   .rcw-message-text {
-    @include message-bubble($primary-color);
+    @include message-bubble($main-color);
   }
 }
 

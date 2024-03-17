@@ -77,8 +77,6 @@ function WidgetLayout({
 
   useEffect(() => {
     document.documentElement.style.setProperty('--primary-color', primaryColor || '#1A202C'); // black
-    document.documentElement.style.setProperty('--secondary-color', secondaryColor || '#D9D9D9'); // light grey
-
     if(showChat) {
       messageRef.current = document.getElementById('messages') as HTMLDivElement;
     }
