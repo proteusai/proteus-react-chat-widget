@@ -32,6 +32,10 @@ type Props = {
   emojis?: boolean;
   primaryColor?: string;
   secondaryColor?: string;
+  primaryTextColor: string;
+  secondaryTextColor?: string;
+  theme?: string;
+  launcherText?: string;
 }
 
 function Widget({
@@ -60,6 +64,10 @@ function Widget({
   emojis,
   primaryColor,
   secondaryColor,
+  primaryTextColor,
+  secondaryTextColor,
+  theme,
+  launcherText,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -108,7 +116,11 @@ function Widget({
       resizable={resizable}
       emojis={emojis}
       primaryColor={primaryColor}
-      secondaryColor={secondaryColor} 
+      secondaryColor={secondaryColor}
+      primaryTextColor={primaryTextColor}
+      secondaryTextColor={secondaryTextColor}
+      theme={theme}
+      launcherText={launcherText}
     />
   );
 }

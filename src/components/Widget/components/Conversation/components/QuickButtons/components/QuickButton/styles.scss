@@ -3,7 +3,7 @@
 .quick-button {
   background: none;
   border-radius: 15px;
-  border: 2px solid $main-color;
+  border: 2px solid $theme-color;
   font-weight: bold;
   padding: 5px 10px;
   cursor: pointer;
@@ -11,7 +11,7 @@
   color: $grey-2;
 
   &:active {
-    background: $main-color;
+    background: $theme-color;
     color: $white;
   }
 }

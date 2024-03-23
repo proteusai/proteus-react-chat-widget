@@ -31,7 +31,11 @@ type Props = {
   showBadge?: boolean;
   resizable?: boolean;
   primaryColor: string;
-  secondaryColor: string;
+  secondaryColor?: string;
+  primaryTextColor: string;
+  secondaryTextColor?: string;
+  theme?: string;
+  launcherText?: string;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -60,6 +64,10 @@ function ConnectedWidget({
   emojis,
   primaryColor,
   secondaryColor,
+  primaryTextColor,
+  secondaryTextColor,
+  theme,
+  launcherText,
 }: Props) {
   
   
@@ -91,6 +99,10 @@ function ConnectedWidget({
         emojis={emojis}
         primaryColor={primaryColor}
         secondaryColor={secondaryColor}
+        primaryTextColor={primaryTextColor}
+        secondaryTextColor={secondaryTextColor}
+        theme={theme}
+        launcherText={launcherText}
       />
     </Provider>
   );
@@ -109,6 +121,7 @@ const defaultProps = {
   imagePreview: false,
   zoomStep: 80,
   showBadge: true,
+  theme: 'default',
 };
 ConnectedWidget.defaultProps = defaultProps;
 

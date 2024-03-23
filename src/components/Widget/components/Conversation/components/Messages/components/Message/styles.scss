@@ -6,7 +6,7 @@
   display: flex;
   white-space: pre-wrap;
   word-wrap: break-word;
-  color:#F2F2F7;
+  color: $primary-text-color;
   
   &-client {
     flex-direction: row-reverse;
@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: flex-start;
 
-  color:#F2F2F7;
+  color: $primary-text-color;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
@@ -31,7 +31,7 @@
   line-height: normal;
 
   .rcw-message-text {
-    @include message-bubble($main-color);
+    @include message-bubble($theme-color);
   }
 }
 
@@ -40,7 +40,7 @@
   flex-direction: column;
   margin-left: auto;
 
-  color:#F2F2F7;
+  color: $secondary-text-color;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
@@ -48,7 +48,7 @@
   line-height: normal;
 
   .rcw-message-text {
-    @include message-bubble(#0078D3);
+    @include message-bubble($secondary-color);
 
     white-space: pre-wrap;
     word-wrap: break-word;
