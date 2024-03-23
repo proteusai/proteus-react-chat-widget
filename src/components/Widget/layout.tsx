@@ -38,6 +38,10 @@ type Props = {
   emojis?: boolean;
   primaryColor?: string;
   secondaryColor?: string;
+  primaryTextColor?: string;
+  secondaryTextColor?: string;
+  theme?: string;
+  launcherText?: string;
 }
 
 function WidgetLayout({
@@ -64,7 +68,11 @@ function WidgetLayout({
   resizable,
   emojis,
   primaryColor,
-  secondaryColor
+  secondaryColor,
+  primaryTextColor,
+  secondaryTextColor,
+  theme,
+  launcherText
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
@@ -76,7 +84,18 @@ function WidgetLayout({
   const messageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--primary-color', primaryColor || '#1A202C'); // black
+    document.documentElement.style.setProperty('--primary-color', primaryColor || '#1A202C'); // header and launcher color
+    document.documentElement.style.setProperty('--secondary-color', secondaryColor || '#1A202C'); // background color for user sent messages bubble
+    document.documentElement.style.setProperty('--primary-text-color', primaryTextColor || '#F2F2F7'); // text color for header title
+    document.documentElement.style.setProperty('--secondary-text-color', secondaryTextColor || '#F2F2F7'); // text color for user sent message bubble
+    if (theme === 'black' || theme === 'default') {
+      document.documentElement.style.setProperty('--theme', '#1A202C'); // theme color black/white
+      document.documentElement.style.setProperty('--theme-text-color', '#fff'); // theme text color white
+    } else {
+      document.documentElement.style.setProperty('--theme', theme || '#fff'); // theme color black/white
+      document.documentElement.style.setProperty('--theme-text-color', '#000'); // theme text color black
+    }
+
     if(showChat) {
       messageRef.current = document.getElementById('messages') as HTMLDivElement;
     }
@@ -155,6 +174,7 @@ function WidgetLayout({
           chatId={chatId}
           openImg={titleAvatar}
           showBadge={showBadge}
+          launcherText={launcherText}
         />
       }
       {

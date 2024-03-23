@@ -26,14 +26,20 @@ export default class App extends Component {
   render() {
     return (
       <Widget
-        title="Company name"
+        title="Company Name overflow message display on the go like that asham ashim dua solah istakarah"
         subtitle="powered by Proteus"
         senderPlaceHolder="Ask a question ..."
         handleNewUserMessage={this.handleNewUserMessage}
         handleQuickButtonClicked={this.handleQuickButtonClicked}
         imagePreview
-        primaryColor='blue'
-        secondaryColor='linear-gradient(to right, #4285F4, #A92FFF, #FFDD67)'
+        primaryColor='red'
+        secondaryColor='blue'
+        primaryTextColor='green'
+        secondaryTextColor='white'
+        theme='orange'
+        launcherText='open'
+        fullScreenMode={false}
+        showChat={true}
       />
     );
   }
