@@ -24,7 +24,6 @@ type Props = {
   profileAvatar?: string;
   profileClientAvatar?: string;
   showCloseButton: boolean;
-  fullScreenMode: boolean;
   autofocus: boolean;
   customLauncher?: AnyFunction;
   onTextInputChange?: (event: any) => void;
@@ -55,7 +54,6 @@ function WidgetLayout({
   profileAvatar,
   profileClientAvatar,
   showCloseButton,
-  fullScreenMode,
   autofocus,
   customLauncher,
   onTextInputChange,
@@ -118,7 +116,7 @@ function WidgetLayout({
   }
 
   /**
-   * Previewer needs to prevent body scroll behavior when fullScreenMode is true
+   * Previewer needs to prevent body scroll behavior when fullScreen is true
    */
   useEffect(() => {
     const target = messageRef?.current;
@@ -132,13 +130,12 @@ function WidgetLayout({
   }, [imagePreview, showChat]);
 
   useEffect(() => {
-    document.body.setAttribute('style', `overflow: ${visible || fullScreenMode ? 'hidden' : 'auto'}`)
-  }, [fullScreenMode, visible])
+    document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`)
+  }, [visible])
 
   return (
     <div
       className={cn('rcw-widget-container', {
-        'rcw-full-screen': fullScreenMode,
         'rcw-previewer': imagePreview,
         'rcw-close-widget-container ': !showChat
         })
@@ -168,7 +165,6 @@ function WidgetLayout({
       }
       {customLauncher ?
         customLauncher(onToggleConversation) :
-        !fullScreenMode &&
         <Launcher
           toggle={onToggleConversation}
           chatId={chatId}
@@ -178,7 +174,7 @@ function WidgetLayout({
         />
       }
       {
-        imagePreview && <FullScreenPreview fullScreenMode={fullScreenMode} zoomStep={zoomStep} />
+        imagePreview && <FullScreenPreview zoomStep={zoomStep} />
       }
     </div>
   );

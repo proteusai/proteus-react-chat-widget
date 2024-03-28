@@ -14,7 +14,6 @@ type Props = {
   profileAvatar?: string;
   profileClientAvatar?: string;
   showCloseButton: boolean;
-  fullScreenMode: boolean;
   autofocus: boolean;
   customLauncher?: AnyFunction;
   handleNewUserMessage: AnyFunction;
@@ -46,7 +45,6 @@ function Widget({
   profileAvatar,
   profileClientAvatar,
   showCloseButton,
-  fullScreenMode,
   autofocus,
   customLauncher,
   handleNewUserMessage,
@@ -103,7 +101,6 @@ function Widget({
       profileAvatar={profileAvatar}
       profileClientAvatar={profileClientAvatar}
       showCloseButton={showCloseButton}
-      fullScreenMode={fullScreenMode}
       autofocus={autofocus}
       customLauncher={customLauncher}
       onTextInputChange={handleTextInputChange}
