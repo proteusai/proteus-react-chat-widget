@@ -35,6 +35,7 @@ type Props = {
   secondaryTextColor?: string;
   theme?: string;
   launcherText?: string;
+  fullScreen?: boolean;
 }
 
 function Widget({
@@ -66,6 +67,7 @@ function Widget({
   secondaryTextColor,
   theme,
   launcherText,
+  fullScreen,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -118,6 +120,7 @@ function Widget({
       secondaryTextColor={secondaryTextColor}
       theme={theme}
       launcherText={launcherText}
+      fullScreen={fullScreen}
     />
   );
 }

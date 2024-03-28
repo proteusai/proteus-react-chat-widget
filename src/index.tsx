@@ -35,6 +35,7 @@ type Props = {
   secondaryTextColor?: string;
   theme?: string;
   launcherText?: string;
+  fullScreen?: boolean;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -66,6 +67,7 @@ function ConnectedWidget({
   secondaryTextColor,
   theme,
   launcherText,
+  fullScreen,
 }: Props) {
   
   
@@ -100,6 +102,7 @@ function ConnectedWidget({
         secondaryTextColor={secondaryTextColor}
         theme={theme}
         launcherText={launcherText}
+        fullScreen={fullScreen}
       />
     </Provider>
   );
@@ -118,6 +121,7 @@ const defaultProps = {
   zoomStep: 80,
   showBadge: true,
   theme: 'default',
+  fullScreen: false,
 };
 ConnectedWidget.defaultProps = defaultProps;
 

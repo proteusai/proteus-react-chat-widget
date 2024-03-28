@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { GlobalState } from 'src/store/types';
 import { AnyFunction } from 'src/utils/types';
-import { openFullscreenPreview } from '../../store/actions';
+import { openFullscreenPreview, toggleChat } from '../../store/actions';
 
 import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
@@ -41,6 +41,7 @@ type Props = {
   secondaryTextColor?: string;
   theme?: string;
   launcherText?: string;
+  fullScreen?: boolean;
 }
 
 function WidgetLayout({
@@ -70,9 +71,19 @@ function WidgetLayout({
   primaryTextColor,
   secondaryTextColor,
   theme,
-  launcherText
+  launcherText,
+  fullScreen,
 }: Props) {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(fullScreen);
+    
+    if (fullScreen) {
+      dispatch(toggleChat());
+    }
+  }, [fullScreen]);
+
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
     dissableInput: state.behavior.disabledInput,
@@ -137,6 +148,7 @@ function WidgetLayout({
     <div
       className={cn('rcw-widget-container', {
         'rcw-previewer': imagePreview,
+        'full-screen-container': fullScreen,
         'rcw-close-widget-container ': !showChat
         })
       }
@@ -154,16 +166,17 @@ function WidgetLayout({
           disabledInput={dissableInput}
           autofocus={autofocus}
           titleAvatar={titleAvatar}
-          className={showChat ? 'active' : 'hidden'}
+          className={showChat || fullScreen ? 'active' : 'hidden'}
           onQuickButtonClicked={onQuickButtonClicked}
           onTextInputChange={onTextInputChange}
           sendButtonAlt={sendButtonAlt}
           showTimeStamp={showTimeStamp}
           resizable={resizable}
           emojis={emojis}
+          fullScreen={fullScreen}
         />
       }
-      {customLauncher ?
+      {!fullScreen && (customLauncher ?
         customLauncher(onToggleConversation) :
         <Launcher
           toggle={onToggleConversation}
@@ -171,7 +184,7 @@ function WidgetLayout({
           openImg={titleAvatar}
           showBadge={showBadge}
           launcherText={launcherText}
-        />
+        />)
       }
       {
         imagePreview && <FullScreenPreview zoomStep={zoomStep} />

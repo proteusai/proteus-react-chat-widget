@@ -35,6 +35,7 @@ type Props = {
   showTimeStamp: boolean;
   resizable?: boolean;
   emojis?: boolean;
+  fullScreen?: boolean;
 };
 
 function Conversation({
@@ -55,7 +56,8 @@ function Conversation({
   sendButtonAlt,
   showTimeStamp,
   resizable,
-  emojis
+  emojis,
+  fullScreen,
 }: Props) {
   const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
   let startX, startWidth;
@@ -106,7 +108,10 @@ function Conversation({
 
   return (
     <div id="rcw-conversation-container" onMouseDown={initResize} 
-      className={cn('rcw-conversation-container', className)} aria-live="polite">
+      className={cn('rcw-conversation-container',{
+        'full-screen-conversation-container': fullScreen},
+        className)}
+      aria-live="polite">
       {resizable && <div className="rcw-conversation-resizer" />}
       <Header
         title={title}

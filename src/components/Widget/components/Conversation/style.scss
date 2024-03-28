@@ -30,6 +30,12 @@
   }
 }
 
+// full-screen-conversation container
+.full-screen-conversation-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
 .rcw-conversation-resizer {
   cursor: col-resize;
   height: 100%;
