@@ -14,7 +14,6 @@ type Props = {
   profileAvatar?: string;
   profileClientAvatar?: string;
   showCloseButton: boolean;
-  fullScreenMode: boolean;
   autofocus: boolean;
   customLauncher?: AnyFunction;
   handleNewUserMessage: AnyFunction;
@@ -36,6 +35,7 @@ type Props = {
   secondaryTextColor?: string;
   theme?: string;
   launcherText?: string;
+  fullScreen?: boolean;
 }
 
 function Widget({
@@ -46,7 +46,6 @@ function Widget({
   profileAvatar,
   profileClientAvatar,
   showCloseButton,
-  fullScreenMode,
   autofocus,
   customLauncher,
   handleNewUserMessage,
@@ -68,6 +67,7 @@ function Widget({
   secondaryTextColor,
   theme,
   launcherText,
+  fullScreen,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -103,7 +103,6 @@ function Widget({
       profileAvatar={profileAvatar}
       profileClientAvatar={profileClientAvatar}
       showCloseButton={showCloseButton}
-      fullScreenMode={fullScreenMode}
       autofocus={autofocus}
       customLauncher={customLauncher}
       onTextInputChange={handleTextInputChange}
@@ -121,6 +120,7 @@ function Widget({
       secondaryTextColor={secondaryTextColor}
       theme={theme}
       launcherText={launcherText}
+      fullScreen={fullScreen}
     />
   );
 }

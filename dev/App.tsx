@@ -38,8 +38,8 @@ export default class App extends Component {
         secondaryTextColor='white'
         theme='orange'
         launcherText='open'
-        fullScreenMode={false}
-        showChat={true}
+        fullScreen={false}
+        emojis={true}
       />
     );
   }

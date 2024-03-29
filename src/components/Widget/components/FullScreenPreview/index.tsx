@@ -14,11 +14,10 @@ const zoomIn = require('../../../../../assets/zoom-in.svg') as string;
 const zoomOut = require('../../../../../assets/zoom-out.svg') as string;
 
 type Props = {
-  fullScreenMode?: boolean;
   zoomStep?: number
 }
 
-export default function FullScreenPreview({ fullScreenMode, zoomStep }:Props) {
+export default function FullScreenPreview({ zoomStep }:Props) {
   const {
     state,
     initFileSize,
