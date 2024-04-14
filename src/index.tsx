@@ -36,6 +36,7 @@ type Props = {
   theme?: string;
   launcherText?: string;
   fullScreen?: boolean;
+  weburl: string;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -68,6 +69,7 @@ function ConnectedWidget({
   theme,
   launcherText,
   fullScreen,
+  weburl,
 }: Props) {
   
   
@@ -103,6 +105,7 @@ function ConnectedWidget({
         theme={theme}
         launcherText={launcherText}
         fullScreen={fullScreen}
+        weburl={weburl}
       />
     </Provider>
   );
