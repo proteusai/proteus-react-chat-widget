@@ -40,6 +40,7 @@ export default class App extends Component {
         launcherText='open'
         fullScreen={false}
         emojis={true}
+        weburl='http://localhost:8000/'
       />
     );
   }

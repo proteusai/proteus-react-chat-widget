@@ -42,6 +42,7 @@ type Props = {
   theme?: string;
   launcherText?: string;
   fullScreen?: boolean;
+  weburl: string;
 }
 
 function WidgetLayout({
@@ -73,12 +74,11 @@ function WidgetLayout({
   theme,
   launcherText,
   fullScreen,
+  weburl,
 }: Props) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(fullScreen);
-    
+  useEffect(() => {    
     if (fullScreen) {
       dispatch(toggleChat());
     }
@@ -108,6 +108,19 @@ function WidgetLayout({
     if(showChat) {
       messageRef.current = document.getElementById('messages') as HTMLDivElement;
     }
+
+    const widgetOpenBtn = document.getElementById('openWidgetBtn') as HTMLButtonElement;
+    widgetOpenBtn?.addEventListener('click', function() {
+      // Send message to parent window indicating widget is being opened
+      window.parent.postMessage({ action: 'openWidget' }, weburl);
+    });
+
+    const widgetCloseBtn = document.getElementById('closeWidgetBtn') as HTMLButtonElement;
+    widgetCloseBtn?.addEventListener('click', function() {
+      // Send message to parent window indicating widget is being closed
+      window.parent.postMessage({ action: 'closeWidget' }, weburl);
+    });
+
     return () => {
       messageRef.current = null;
     }
