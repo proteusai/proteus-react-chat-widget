@@ -3,7 +3,7 @@
 .rcw-sender {
   border-top: 1px solid #D9D9D9;
 
-  align-items: stretch;
+  align-items: center;
   background-color: $theme-color;
   display: flex;
   height: max-content;
@@ -52,7 +52,7 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   color: $white;
-
+  
   &:focus-visible {
     outline: none;
   }
@@ -77,4 +77,10 @@
 .rcw-message-disable {
   background-color: $theme-color;
   cursor: not-allowed;
+}
+
+.rcw-file-btn {
+  background: $theme-color;
+  border: 0;
+  cursor: pointer;
 }
