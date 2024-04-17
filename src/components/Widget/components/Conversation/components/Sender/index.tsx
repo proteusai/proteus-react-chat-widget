@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, forwardRef, useImperativeHandle, ReactNode } from 'react';
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle, ReactNode, Ref } from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
@@ -6,6 +6,8 @@ import { GlobalState } from 'src/store/types';
 
 import { getCaretIndex, isFirefox, updateCaret, insertNodeAtCaret, getSelection } from '../../../../../../utils/contentEditable'
 const send = require('../../../../../../../assets/send-icon.svg') as string;
+const paperclip = require('../../../../../../../assets/paperclip.svg') as string;
+const smiley = require('../../../../../../../assets/smiley.svg') as string;
 const brRegex = /<br>/g;
 
 import './style.scss';
@@ -28,6 +30,7 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
   const [enter, setEnter]= useState(false)
   const [firefox, setFirefox] = useState(false);
   const [height, setHeight] = useState(0)
+  const [selectedFile, setSelectedFile] = useState<any>(null);
   // @ts-ignore
   useEffect(() => { if (showChat && autofocus) inputRef.current?.focus(); }, [showChat]);
   useEffect(() => { setFirefox(isFirefox())}, [])
@@ -123,11 +126,33 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
     checkSize();
   }
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setSelectedFile(reader.result);
+        sendMessage(reader.result);
+      };
+    }
+  };
+
   return (
     <div ref={refContainer} className="rcw-sender">
       {/* <button className='rcw-picker-btn' type="submit" onClick={handlerPressEmoji}>
-        <img src={emoji} className="rcw-picker-icon" alt="" />
+        <img src={smiley} className="rcw-picker-icon" alt="" />
       </button> */}
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        style={{ display: 'none' }}
+        id="fileInput"
+      />
+      <label htmlFor="fileInput" className="rcw-file-btn">
+          <img src={paperclip} alt="" />
+      </label>
       <div className={cn('rcw-new-message', {
           'rcw-message-disable': disabledInput,
         })

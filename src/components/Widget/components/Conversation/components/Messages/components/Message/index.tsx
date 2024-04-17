@@ -26,7 +26,10 @@ function Message({ message, showTimeStamp }: Props) {
 
   return (
     <div className={`rcw-${message.sender}`}>
-      <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML.replace(/\n$/,'') }} />
+     {(message.text.substring(0, 11) === 'data:image/') ? 
+     <img src={message.text} alt="profile" style={{ maxWidth: '200px', maxHeight: '200px' }}/> :
+     <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML.replace(/\n$/,'') }} />
+     }
       {showTimeStamp && <span className="rcw-timestamp">{format(message.timestamp, 'hh:mm')}</span>}
     </div>
   );

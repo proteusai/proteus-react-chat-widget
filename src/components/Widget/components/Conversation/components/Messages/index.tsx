@@ -33,7 +33,7 @@ function Messages({ profileAvatar, profileClientAvatar, showTimeStamp }: Props) 
     else dispatch(setBadgeCount(messages.filter((message) => message.unread).length));
   }, [messages, badgeCount, showChat]);
     
-  const getComponentToRender = (message: MessageTypes | Link | CustomCompMessage) => {
+  const getComponentToRender = (message: any) => {
     const ComponentToRender = message.component;
     if (message.type === 'component') {
       return <ComponentToRender {...message.props} />;
