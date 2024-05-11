@@ -36,12 +36,11 @@ export default class App extends Component {
         secondaryColor='blue'
         primaryTextColor='green'
         secondaryTextColor='white'
-        theme='orange'
+        theme='pink'
         launcherText='open'
         fullScreen={false}
         emojis={true}
         weburl='*'
-        displayPosition='left'
       />
     );
   }

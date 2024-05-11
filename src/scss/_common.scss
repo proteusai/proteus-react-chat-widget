@@ -54,7 +54,7 @@
 
 @mixin launcher-fs {
   bottom: 0;
-  margin: 20px;
+  margin: inherit;
   position: fixed;
   right: 0;
 }

@@ -36,6 +36,9 @@ type Props = {
   resizable?: boolean;
   emojis?: boolean;
   fullScreen?: boolean;
+  showDisclaimer?: boolean;
+  disclaimerText?: string;
+  disclaimerLearnMoreUrl?: string;
 };
 
 function Conversation({
@@ -58,6 +61,9 @@ function Conversation({
   resizable,
   emojis,
   fullScreen,
+  showDisclaimer,
+  disclaimerText,
+  disclaimerLearnMoreUrl,
 }: Props) {
   const [containerDiv, setContainerDiv] = useState<HTMLElement | null>();
   let startX, startWidth;
@@ -140,6 +146,9 @@ function Conversation({
         buttonAlt={sendButtonAlt}
         onPressEmoji={togglePicker}
         onChangeSize={setOffset}
+        showDisclaimer={showDisclaimer}
+        disclaimerText={disclaimerText}
+        disclaimerLearnMoreUrl={disclaimerLearnMoreUrl}
       />
       {/* <Menu 
         toggle={() => console.log('toggled')}

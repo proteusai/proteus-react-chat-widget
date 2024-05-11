@@ -39,9 +39,50 @@ type Props = {
   fullScreen?: boolean;
   weburl?: string;
   displayPosition?: POSITION;
+  showDisclaimer?: boolean;
+  disclaimerText?: string;
+  disclaimerLearnMoreUrl?: string;
 } & typeof defaultProps;
 
-function ConnectedWidget({
+/**
+ * React Chat Widget Component
+ * @param handleNewUserMessage: Function;
+ * @param handleQuickButtonClicked?: Function;
+ * @param title?: string;
+ * @param titleAvatar?: string;
+ * @param subtitle?: string;
+ * @param senderPlaceHolder?: string;
+ * @param showCloseButton?: boolean;
+ * @param autofocus?: boolean;
+ * @param profileAvatar?: string;
+ * @param profileClientAvatar?: string;
+ * @param launcher?: AnyFunction;
+ * @param handleTextInputChange?: (event: any) => void;
+ * @param chatId?: string;
+ * @param handleToggle?: AnyFunction;
+ * @param sendButtonAlt?: string;
+ * @param showTimeStamp?: boolean;
+ * @param imagePreview?: boolean;
+ * @param zoomStep?: number;
+ * @param emojis?: boolean;
+ * @param handleSubmit?: AnyFunction;
+ * @param showBadge?: boolean;
+ * @param resizable?: boolean;
+ * @param primaryColor: string;
+ * @param secondaryColor?: string;
+ * @param primaryTextColor: string;
+ * @param secondaryTextColor?: string;
+ * @param theme?: string;
+ * @param launcherText?: string;
+ * @param fullScreen?: boolean;
+ * @param weburl?: string;
+ * @param displayPosition?: POSITION;
+ * @param showDisclaimer?: boolean;
+ * @param disclaimerText?: string;
+ * @param disclaimerLearnMoreUrl?: string;
+ * @returns Widget instance
+ */
+const ConnectedWidget: React.FC<Props> = ({
   title,
   titleAvatar,
   subtitle,
@@ -73,7 +114,10 @@ function ConnectedWidget({
   fullScreen,
   weburl,
   displayPosition,
-}: Props) {
+  showDisclaimer,
+  disclaimerText,
+  disclaimerLearnMoreUrl,
+}) => {
   
   
   return (
@@ -110,6 +154,9 @@ function ConnectedWidget({
         fullScreen={fullScreen}
         weburl={weburl}
         displayPosition={displayPosition}
+        showDisclaimer={showDisclaimer}
+        disclaimerText={disclaimerText}
+        disclaimerLearnMoreUrl={disclaimerLearnMoreUrl}
       />
     </Provider>
   );
@@ -131,6 +178,9 @@ const defaultProps = {
   fullScreen: false,
   displayPosition: POSITION.right,
   weburl: '*',
+  disclaimerText: 'AI generated answer. Always double-check important facts.',
+  showDisclaimer: true,
+  disclaimerLearnMoreUrl: 'https://www.useproteus.ai/terms',
 };
 ConnectedWidget.defaultProps = defaultProps;
 

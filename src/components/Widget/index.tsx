@@ -38,6 +38,9 @@ type Props = {
   fullScreen?: boolean;
   weburl: string;
   displayPosition: string;
+  showDisclaimer?: boolean;
+  disclaimerText?: string;
+  disclaimerLearnMoreUrl?: string;
 }
 
 function Widget({
@@ -72,6 +75,9 @@ function Widget({
   fullScreen,
   weburl,
   displayPosition,
+  disclaimerLearnMoreUrl,
+  showDisclaimer,
+  disclaimerText,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -127,6 +133,9 @@ function Widget({
       fullScreen={fullScreen}
       weburl={weburl}
       displayPosition={displayPosition}
+      showDisclaimer={showDisclaimer}
+      disclaimerText={disclaimerText}
+      disclaimerLearnMoreUrl={disclaimerLearnMoreUrl}
     />
   );
 }

@@ -45,6 +45,9 @@ type Props = {
   fullScreen?: boolean;
   weburl: string;
   displayPosition: string;
+  showDisclaimer?: boolean;
+  disclaimerText?: string;
+  disclaimerLearnMoreUrl?: string;
 }
 
 function WidgetLayout({
@@ -77,7 +80,10 @@ function WidgetLayout({
   launcherText,
   fullScreen,
   weburl,
-  displayPosition
+  displayPosition,
+  showDisclaimer,
+  disclaimerText,
+  disclaimerLearnMoreUrl,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -124,6 +130,7 @@ function WidgetLayout({
       // Send message to parent window indicating widget is being closed
       window.parent.postMessage({ action: 'closeWidget' }, weburl);
     });
+
     if (displayPosition === POSITION.left) {
       const widgetContainer = document.getElementById('rcw-container') as HTMLDivElement;
       widgetContainer.style.left = '0';
@@ -196,6 +203,9 @@ function WidgetLayout({
           resizable={resizable}
           emojis={emojis}
           fullScreen={fullScreen}
+          showDisclaimer={showDisclaimer}
+          disclaimerText={disclaimerText}
+          disclaimerLearnMoreUrl={disclaimerLearnMoreUrl}
         />
       }
       {!fullScreen && (customLauncher ?

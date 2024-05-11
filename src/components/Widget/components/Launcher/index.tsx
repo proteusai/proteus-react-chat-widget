@@ -43,7 +43,7 @@ function Launcher({ toggle, chatId, openImg, showBadge, launcherText }: Props) {
         :
         <button type="button" className={cn('rcw-launcher', { 'rcw-hide-sm': showChat })} onClick={toggleChat} aria-controls={chatId} style={{ "cursor": 'pointer' }} id='openWidgetBtn'>
           {!showChat && showBadge && <Badge badge={badgeCount} />}
-          <span className='text'>{launcherText || `Chat with me`}</span>
+          <span className='text'>{launcherText || `Chat with us`}</span>
           <img src={openImg || openLauncher} className="rcw-open-launcher" alt='open' />
         </button>
       }

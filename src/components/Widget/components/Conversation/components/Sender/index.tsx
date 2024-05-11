@@ -21,9 +21,14 @@ type Props = {
   onPressEmoji: () => void;
   onChangeSize: (event: any) => void;
   onTextInputChange?: (event: any) => void;
+  showDisclaimer?: boolean;
+  disclaimerText?: string;
+  disclaimerLearnMoreUrl?: string;
 }
 
-function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInputChange, buttonAlt, onPressEmoji, onChangeSize }: Props, ref) {
+function Sender({
+  sendMessage, placeholder, disabledInput, autofocus, onTextInputChange, buttonAlt, onPressEmoji,
+  onChangeSize, showDisclaimer, disclaimerText, disclaimerLearnMoreUrl, }: Props, ref) {
   const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
   const inputRef = useRef<HTMLDivElement>(null!);
   const refContainer = useRef<HTMLDivElement>(null);
@@ -139,42 +144,47 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
   };
 
   return (
-    <div ref={refContainer} className="rcw-sender">
-      {/* <button className='rcw-picker-btn' type="submit" onClick={handlerPressEmoji}>
-        <img src={smiley} className="rcw-picker-icon" alt="" />
-      </button> */}
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-        style={{ display: 'none' }}
-        id="fileInput"
-      />
-      <label htmlFor="fileInput" className="rcw-file-btn">
-          <img src={paperclip} alt="" />
-      </label>
-      <div className={cn('rcw-new-message', {
-          'rcw-message-disable': disabledInput,
-        })
-      }>
-        <div
-          spellCheck
-          className="rcw-input"
-          role="textbox"
-          contentEditable={!disabledInput}
-          ref={inputRef}
-          placeholder={placeholder}
-          onInput={handlerOnChange}
-          onKeyPress={handlerOnKeyPress}
-          onKeyUp={handlerOnKeyUp}
-          onKeyDown={handlerOnKeyDown}
+    <>
+      <div ref={refContainer} className="rcw-sender">
+        {/* <button className='rcw-picker-btn' type="submit" onClick={handlerPressEmoji}>
+          <img src={smiley} className="rcw-picker-icon" alt="" />
+        </button> */}
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+          id="fileInput"
         />
-        
+        <label htmlFor="fileInput" className="rcw-file-btn">
+            <img src={paperclip} alt="" />
+        </label>
+        <div className={cn('rcw-new-message', {
+            'rcw-message-disable': disabledInput,
+          })
+        }>
+          <div
+            spellCheck
+            className="rcw-input"
+            role="textbox"
+            contentEditable={!disabledInput}
+            ref={inputRef}
+            placeholder={placeholder}
+            onInput={handlerOnChange}
+            onKeyPress={handlerOnKeyPress}
+            onKeyUp={handlerOnKeyUp}
+            onKeyDown={handlerOnKeyDown}
+          />
+        </div>
+        <button type="submit" className="rcw-send" onClick={handlerSendMessage}>
+          <img src={send} className="rcw-send-icon" alt={buttonAlt} />
+        </button>
       </div>
-      <button type="submit" className="rcw-send" onClick={handlerSendMessage}>
-        <img src={send} className="rcw-send-icon" alt={buttonAlt} />
-      </button>
-    </div>
+      {showDisclaimer && 
+      <p className='rcw-disclaimer-text'>{disclaimerText}
+        <a href={disclaimerLearnMoreUrl} target='_blank'>learn more</a>
+      </p>}
+    </>
   );
 }
 
