@@ -12,3 +12,8 @@ export const MESSAGES_TYPES = {
 };
 
 export const MESSAGE_BOX_SCROLL_DURATION = 400;
+
+export enum POSITION {
+  right = 'right',
+  left = 'left',
+}
