@@ -5,6 +5,7 @@ import Widget from './components/Widget';
 import store from  './store';
 
 import { AnyFunction } from './utils/types';
+import { POSITION } from './constants';
 
 type Props = {
   handleNewUserMessage: AnyFunction;
@@ -36,7 +37,8 @@ type Props = {
   theme?: string;
   launcherText?: string;
   fullScreen?: boolean;
-  weburl: string;
+  weburl?: string;
+  displayPosition?: POSITION;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -70,6 +72,7 @@ function ConnectedWidget({
   launcherText,
   fullScreen,
   weburl,
+  displayPosition,
 }: Props) {
   
   
@@ -106,6 +109,7 @@ function ConnectedWidget({
         launcherText={launcherText}
         fullScreen={fullScreen}
         weburl={weburl}
+        displayPosition={displayPosition}
       />
     </Provider>
   );
@@ -125,6 +129,8 @@ const defaultProps = {
   showBadge: true,
   theme: 'default',
   fullScreen: false,
+  displayPosition: POSITION.right,
+  weburl: '*',
 };
 ConnectedWidget.defaultProps = defaultProps;
 

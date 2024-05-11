@@ -12,6 +12,7 @@ import Menu from './components/Conversation/components/Menu';
 import FullScreenPreview from './components/FullScreenPreview';
 
 import './style.scss';
+import { POSITION } from '../../constants';
 
 type Props = {
   title: string;
@@ -43,6 +44,7 @@ type Props = {
   launcherText?: string;
   fullScreen?: boolean;
   weburl: string;
+  displayPosition: string;
 }
 
 function WidgetLayout({
@@ -75,6 +77,7 @@ function WidgetLayout({
   launcherText,
   fullScreen,
   weburl,
+  displayPosition
 }: Props) {
   const dispatch = useDispatch();
 
@@ -97,6 +100,7 @@ function WidgetLayout({
     document.documentElement.style.setProperty('--secondary-color', secondaryColor || '#1A202C'); // background color for user sent messages bubble
     document.documentElement.style.setProperty('--primary-text-color', primaryTextColor || '#F2F2F7'); // text color for header title
     document.documentElement.style.setProperty('--secondary-text-color', secondaryTextColor || '#F2F2F7'); // text color for user sent message bubble
+    document.documentElement.style.setProperty('--display-position', displayPosition || POSITION.right); // text color for user sent message bubble
     if (theme === 'black' || theme === 'default') {
       document.documentElement.style.setProperty('--theme', '#1A202C'); // theme color black/white
       document.documentElement.style.setProperty('--theme-text-color', '#fff'); // theme text color white
@@ -120,6 +124,10 @@ function WidgetLayout({
       // Send message to parent window indicating widget is being closed
       window.parent.postMessage({ action: 'closeWidget' }, weburl);
     });
+    if (displayPosition === POSITION.left) {
+      const widgetContainer = document.getElementById('rcw-container') as HTMLDivElement;
+      widgetContainer.style.left = '0';
+    }
 
     return () => {
       messageRef.current = null;
@@ -154,7 +162,7 @@ function WidgetLayout({
   }, [imagePreview, showChat]);
 
   useEffect(() => {
-    document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`)
+    document.body.setAttribute('style', `overflow: ${visible ? 'hidden' : 'auto'}`);
   }, [visible])
 
   return (
@@ -165,6 +173,7 @@ function WidgetLayout({
         'rcw-close-widget-container ': !showChat
         })
       }
+      id='rcw-container'
     >
       {showChat &&
         <Conversation

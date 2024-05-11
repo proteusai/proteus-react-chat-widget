@@ -37,6 +37,7 @@ type Props = {
   launcherText?: string;
   fullScreen?: boolean;
   weburl: string;
+  displayPosition: string;
 }
 
 function Widget({
@@ -70,6 +71,7 @@ function Widget({
   launcherText,
   fullScreen,
   weburl,
+  displayPosition,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -124,6 +126,7 @@ function Widget({
       launcherText={launcherText}
       fullScreen={fullScreen}
       weburl={weburl}
+      displayPosition={displayPosition}
     />
   );
 }
