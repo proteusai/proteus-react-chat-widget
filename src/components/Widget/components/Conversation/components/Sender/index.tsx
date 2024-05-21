@@ -155,7 +155,7 @@ function Sender({
           onChange={handleImageChange}
           style={{ display: 'none' }}
           id="fileInput"
-          disabled={!disabledInput}
+          disabled={disabledInput}
         />
         <label htmlFor="fileInput" className="rcw-file-btn">
             <img src={paperclip} alt="" />
