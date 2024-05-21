@@ -183,7 +183,7 @@ function Sender({
       </div>
       {showDisclaimer && 
       <p className='rcw-disclaimer-text'>{disclaimerText}
-        <a href={disclaimerLearnMoreUrl} target='_blank'>learn more</a>
+        <a href={disclaimerLearnMoreUrl} target='_blank'>Learn more</a>
       </p>}
     </>
   );

@@ -178,7 +178,7 @@ const defaultProps = {
   fullScreen: false,
   displayPosition: POSITION.right,
   weburl: '*',
-  disclaimerText: 'AI generated answer. Always double-check important facts.',
+  disclaimerText: 'AI-generated answer. Always double-check important facts.',
   showDisclaimer: true,
   disclaimerLearnMoreUrl: 'https://www.useproteus.ai/terms',
 };
