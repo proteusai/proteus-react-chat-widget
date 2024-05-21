@@ -216,6 +216,7 @@ function WidgetLayout({
           openImg={titleAvatar}
           showBadge={showBadge}
           launcherText={launcherText}
+          displayPosition={displayPosition}
         />)
       }
       {

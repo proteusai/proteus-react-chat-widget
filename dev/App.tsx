@@ -41,6 +41,7 @@ export default class App extends Component {
         fullScreen={false}
         emojis={true}
         weburl='*'
+        displayPosition='left'
       />
     );
   }

@@ -61,12 +61,15 @@
   position: relative;
 }
 
+.rcw-close-btn-left {
+  align-self: flex-start;
+}
+
 .rcw-close-btn .rcw-close-launcher {
   @include animation(0, 0.5s, rotation-lr);
   text-shadow: #FC0 5px 3px 10px;
 
   height: 40px;
-  left: 12px !important;
   object-fit: cover;
   position: absolute;
   top: 6px;
