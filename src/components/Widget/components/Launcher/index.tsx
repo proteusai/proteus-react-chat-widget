@@ -24,7 +24,7 @@ type Props = {
  * @param param0 
  * @returns 
  */
-function Launcher({ toggle, chatId, openImg, showBadge, launcherText, displayPosition }: Props) {
+function Launcher({ toggle, chatId, openImg, showBadge, launcherText, displayPosition }: Props) {  
   const dp = displayPosition === POSITION.left ? true : false;
   const dispatch = useDispatch();
   const { showChat, badgeCount } = useSelector((state: GlobalState) => ({

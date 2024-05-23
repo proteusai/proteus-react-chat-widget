@@ -118,8 +118,6 @@ const ConnectedWidget: React.FC<Props> = ({
   disclaimerText,
   disclaimerLearnMoreUrl,
 }) => {
-  
-  
   return (
     <Provider store={store}>
       <Widget

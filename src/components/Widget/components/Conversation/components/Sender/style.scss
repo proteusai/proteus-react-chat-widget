@@ -11,7 +11,7 @@
   min-height: 45px;
   overflow: hidden;
   padding: 10px;
-  margin: 20px 2px 0px;
+  margin: 20px 10px 0px;
   position: relative;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -23,7 +23,7 @@
 }
 
 .rcw-disclaimer-text {
-  color: $secondary-color;
+  color: $theme-text-color;
   font-size: 12px;
   text-align: center;
 }
@@ -83,10 +83,13 @@
 .rcw-message-disable {
   background-color: $theme-color;
   cursor: not-allowed;
+  pointer-events:none;
+  opacity: 0.5;
+  background: #CCC;
 }
 
 .rcw-file-btn {
-  background: $theme-color;
+  background: #000;
   border: 0;
   cursor: pointer;
 }

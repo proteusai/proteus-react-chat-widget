@@ -142,10 +142,10 @@ function Sender({
       };
     }
   };
-
+  
   return (
     <>
-      <div ref={refContainer} className="rcw-sender">
+      <div ref={refContainer} className={cn("rcw-sender", {'rcw-message-disable': disabledInput,})}>
         {/* <button className='rcw-picker-btn' type="submit" onClick={handlerPressEmoji}>
           <img src={smiley} className="rcw-picker-icon" alt="" />
         </button> */}
@@ -155,7 +155,7 @@ function Sender({
           onChange={handleImageChange}
           style={{ display: 'none' }}
           id="fileInput"
-          disabled={disabledInput}
+          className='testclass'
         />
         <label htmlFor="fileInput" className="rcw-file-btn">
             <img src={paperclip} alt="" />
@@ -183,7 +183,7 @@ function Sender({
       </div>
       {showDisclaimer && 
       <p className='rcw-disclaimer-text'>{disclaimerText}
-        <a href={disclaimerLearnMoreUrl} target='_blank'>Learn more</a>
+        &nbsp;<a href={disclaimerLearnMoreUrl} target='_blank'>Learn more</a>
       </p>}
     </>
   );
