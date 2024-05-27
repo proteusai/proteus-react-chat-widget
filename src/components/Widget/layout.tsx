@@ -131,9 +131,10 @@ function WidgetLayout({
       window.parent.postMessage({ action: 'closeWidget' }, weburl);
     });
 
-    if (displayPosition === POSITION.left) {
+    if (displayPosition === POSITION.right) {
       const widgetContainer = document.getElementById('rcw-container') as HTMLDivElement;
-      widgetContainer.style.left = '0';
+      widgetContainer.style.right = '0';
+      widgetContainer.style.alignItems = 'flex-end';
     }
 
     return () => {
