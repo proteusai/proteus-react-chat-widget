@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 
-import { LinkParams, FullscreenPreviewState } from '../types';
+import { LinkParams, FullscreenPreviewState, MessageDetails } from '../types';
 
 export const TOGGLE_CHAT = 'BEHAVIOR/TOGGLE_CHAT';
 export const TOGGLE_INPUT_DISABLED = 'BEHAVIOR/TOGGLE_INPUT_DISABLED';
@@ -28,13 +28,13 @@ export interface ToggleInputDisabled {
 
 export interface AddUserMessage {
   type: typeof ADD_NEW_USER_MESSAGE;
-  text: string;
+  message: MessageDetails,
   id?: string;
 }
 
 export interface AddResponseMessage {
   type: typeof ADD_NEW_RESPONSE_MESSAGE;
-  text: string;
+  message: MessageDetails,
   id?: string;
 }
 

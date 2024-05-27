@@ -1,3 +1,4 @@
+import { MessageDetails } from './src/store/types';
 // Type definitions for react-chat-widget v3.0.0
 // Project: <https://github.com/Wolox/react-chat-widget>
 // Definitions by: Martín Callegari <https://github.com/mcallegari10>
@@ -6,11 +7,11 @@ import { ElementType, FC } from 'react';
 
 declare const Widget: FC<any>;
 
-export function addUserMessage(text: string): void;
-export function addUserMessage(text: string, id: string): void;
+export function addUserMessage(message: MessageDetails): void;
+export function addUserMessage(message: MessageDetails, id: string): void;
 
-export function addResponseMessage(text: string): void;
-export function addResponseMessage(text: string, id: string): void;
+export function addResponseMessage(message: MessageDetails,): void;
+export function addResponseMessage(message: MessageDetails, id: string): void;
 
 export function addLinkSnippet(link: { link: string, title: string, target?: string }): void;
 export function addLinkSnippet(link: { link: string, title: string, target?: string }, id: string): void;

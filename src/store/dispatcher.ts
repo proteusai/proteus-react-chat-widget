@@ -2,14 +2,14 @@ import { ElementType } from 'react';
 
 import store from '.';
 import * as actions from './actions';
-import { LinkParams, ImageState } from './types';
+import { LinkParams, ImageState, MessageDetails } from './types';
 
-export function addUserMessage(text: string, id?: string) {
-  store.dispatch(actions.addUserMessage(text, id));
+export function addUserMessage(message: MessageDetails, id?: string) {
+  store.dispatch(actions.addUserMessage(message, id));
 }
 
-export function addResponseMessage(text: string, id?: string) {
-  store.dispatch(actions.addResponseMessage(text, id));
+export function addResponseMessage(message: MessageDetails, id?: string) {
+  store.dispatch(actions.addResponseMessage(message, id));
 }
 
 export function addLinkSnippet(link: LinkParams, id?: string) {

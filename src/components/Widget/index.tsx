@@ -5,6 +5,7 @@ import { isWidgetOpened } from '../../store/dispatcher';
 import { AnyFunction } from '../../utils/types';
 
 import WidgetLayout from './layout';
+import { MESSAGES_TYPES } from '../../constants';
 
 type Props = {
   title: string;
@@ -87,13 +88,9 @@ function Widget({
   }
 
   const handleMessageSubmit = (userInput) => {
-    if (!userInput.trim()) {      
-      return;      
-    }
-
     handleSubmit?.(userInput);
     dispatch(addUserMessage(userInput));
-    handleNewUserMessage(userInput);
+    handleNewUserMessage(userInput); // callback function to be executed on message sent.
   }
 
   const onQuickButtonClicked = (event, value) => {

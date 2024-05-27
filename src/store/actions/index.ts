@@ -1,7 +1,7 @@
 import { ElementType } from 'react';
 
 import * as actionsTypes from './types';
-import { LinkParams, ImageState } from '../types';
+import { LinkParams, ImageState, MessageDetails } from '../types';
 
 export function toggleChat(): actionsTypes.ToggleChat {
   return {
@@ -15,18 +15,18 @@ export function toggleInputDisabled(): actionsTypes.ToggleInputDisabled {
   };
 }
 
-export function addUserMessage(text: string, id?: string): actionsTypes.AddUserMessage {
+export function addUserMessage(message: MessageDetails, id?: string): actionsTypes.AddUserMessage {
   return {
     type: actionsTypes.ADD_NEW_USER_MESSAGE,
-    text,
+    message,
     id
   };
 }
 
-export function addResponseMessage(text: string, id?: string): actionsTypes.AddResponseMessage {
+export function addResponseMessage(message: MessageDetails, id?: string): actionsTypes.AddResponseMessage {
   return {
     type: actionsTypes.ADD_NEW_RESPONSE_MESSAGE,
-    text,
+    message,
     id
   };
 }

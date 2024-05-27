@@ -11,6 +11,7 @@ const smiley = require('../../../../../../../assets/smiley.svg') as string;
 const brRegex = /<br>/g;
 
 import './style.scss';
+import { MESSAGES_TYPES } from '../../../../../../constants';
 
 type Props = {
   placeholder: string;
@@ -36,6 +37,7 @@ function Sender({
   const [firefox, setFirefox] = useState(false);
   const [height, setHeight] = useState(0)
   const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [placeholderText, setPlaceholderText] = useState<string>(placeholder);
   // @ts-ignore
   useEffect(() => { if (showChat && autofocus) inputRef.current?.focus(); }, [showChat]);
   useEffect(() => { setFirefox(isFirefox())}, [])
@@ -52,10 +54,33 @@ function Sender({
 
   const handlerSendMessage = () => {
     const el = inputRef.current;
-    if(el.innerHTML) {
-      sendMessage(el.innerText);
-      el.innerHTML = ''
+    let messageToSend = {
+      type: '',
+      content: '',
+      attachments: [] as unknown,
     }
+    if(el.innerHTML && selectedFile) {
+      messageToSend.type = MESSAGES_TYPES.IMAGE
+      messageToSend.content = el.innerHTML
+      messageToSend.attachments = [{ 
+        type: MESSAGES_TYPES.IMAGE,
+        content: selectedFile,
+      }]
+    } else if (el.innerHTML && !selectedFile) {
+      messageToSend.type = MESSAGES_TYPES.TEXT
+      messageToSend.content = el.innerHTML
+    } else if (selectedFile && !el.innerHTML) {
+      messageToSend.type = MESSAGES_TYPES.IMAGE
+      messageToSend.attachments = [{
+        type: MESSAGES_TYPES.IMAGE,
+        content: selectedFile,
+      }]
+    }
+    sendMessage(messageToSend);
+    el.innerHTML = '';
+
+    setPlaceholderText(placeholder);
+    setSelectedFile(null);
   }
 
   const handlerOnSelectEmoji = (emoji) => {
@@ -138,7 +163,8 @@ function Sender({
       reader.readAsDataURL(file);
       reader.onload = () => {
         setSelectedFile(reader.result);
-        sendMessage(reader.result);
+        setPlaceholderText('Add a message instruction for the file');
+        // sendMessage(reader.result);
       };
     }
   };
@@ -170,7 +196,7 @@ function Sender({
             role="textbox"
             contentEditable={!disabledInput}
             ref={inputRef}
-            placeholder={placeholder}
+            placeholder={placeholderText}
             onInput={handlerOnChange}
             onKeyPress={handlerOnKeyPress}
             onKeyUp={handlerOnKeyUp}

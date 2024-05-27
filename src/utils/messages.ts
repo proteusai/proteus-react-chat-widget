@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 
-import { MessageTypes as MessageI, Link, CustomCompMessage, LinkParams } from '../store/types';
+import { MessageTypes as MessageI, Link, CustomCompMessage, LinkParams, MessageDetails } from '../store/types';
 
 import Message from '../components/Widget/components/Conversation/components/Messages/components/Message';
 import Snippet from '../components/Widget/components/Conversation/components/Messages/components/Snippet';
@@ -9,14 +9,14 @@ import QuickButton from '../components/Widget/components/Conversation/components
 import { MESSAGES_TYPES, MESSAGE_SENDER, MESSAGE_BOX_SCROLL_DURATION } from '../constants';
 
 export function createNewMessage(
-  text: string,
+  message: MessageDetails,
   sender: string,
   id?: string,
 ): MessageI {
   return {
-    type: MESSAGES_TYPES.TEXT,
+    type: message.type,
     component: Message,
-    text,
+    message: message,
     sender,
     timestamp: new Date(),
     showAvatar: true,

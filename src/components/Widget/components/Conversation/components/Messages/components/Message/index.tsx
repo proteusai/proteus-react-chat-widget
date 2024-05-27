@@ -15,6 +15,7 @@ type Props = {
 }
 
 function Message({ message, showTimeStamp }: Props) {
+  const { message: messageDetails } = message;
   const sanitizedHTML = markdownIt({ break: true })
     .use(markdownItClass, {
       img: ['rcw-message-img']
@@ -22,14 +23,14 @@ function Message({ message, showTimeStamp }: Props) {
     .use(markdownItSup)
     .use(markdownItSanitizer)
     .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
-    .render(message.text);
+    .render(messageDetails.content.toString());
 
+    const idx = 0;
   return (
     <div className={`rcw-${message.sender}`}>
-     {(message.text.substring(0, 11) === 'data:image/') ? 
-     <img src={message.text} alt="profile" style={{ maxWidth: '200px', maxHeight: '200px' }}/> :
-     <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML.replace(/\n$/,'') }} />
-     }
+     {(messageDetails.attachments?.[idx]?.content.substring(0, 11) === 'data:image/') &&
+     <img src={messageDetails.attachments?.[idx]?.content} alt="profile" style={{ maxWidth: '200px', maxHeight: '200px' }}/>}
+     {(messageDetails.content) && <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML.replace(/\n$/,'') }} />}
       {showTimeStamp && <span className="rcw-timestamp">{format(message.timestamp, 'hh:mm')}</span>}
     </div>
   );
