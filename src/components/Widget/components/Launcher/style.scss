@@ -59,6 +59,11 @@
   align-self: flex-end;
   cursor: pointer;
   position: relative;
+
+  @media screen and (max-width: 500px) {
+    position: absolute;
+    bottom: 5px;
+  }
 }
 
 .rcw-close-btn-left {

@@ -27,6 +27,11 @@
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
+
+  @media screen and (max-width: 500px) {
+    min-height: 100%;
+    max-width: 100%;
+  }
 }
 
 // full-screen-conversation container
