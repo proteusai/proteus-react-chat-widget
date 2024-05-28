@@ -60,7 +60,7 @@ function Sender({
       attachments: [] as unknown,
     }
     if(el.innerHTML && selectedFile) {
-      messageToSend.type = MESSAGES_TYPES.IMAGE
+      messageToSend.type = MESSAGES_TYPES.TEXT
       messageToSend.content = el.innerHTML
       messageToSend.attachments = [{ 
         type: MESSAGES_TYPES.IMAGE,
@@ -69,18 +69,14 @@ function Sender({
     } else if (el.innerHTML && !selectedFile) {
       messageToSend.type = MESSAGES_TYPES.TEXT
       messageToSend.content = el.innerHTML
-    } else if (selectedFile && !el.innerHTML) {
-      messageToSend.type = MESSAGES_TYPES.IMAGE
-      messageToSend.attachments = [{
-        type: MESSAGES_TYPES.IMAGE,
-        content: selectedFile,
-      }]
     }
-    sendMessage(messageToSend);
-    el.innerHTML = '';
-
-    setPlaceholderText(placeholder);
-    setSelectedFile(null);
+    if (messageToSend.content) {
+      sendMessage(messageToSend);
+      el.innerHTML = '';
+  
+      setPlaceholderText(placeholder);
+      setSelectedFile(null);
+    }
   }
 
   const handlerOnSelectEmoji = (emoji) => {
@@ -164,7 +160,6 @@ function Sender({
       reader.onload = () => {
         setSelectedFile(reader.result);
         setPlaceholderText('Add a message instruction for the file');
-        // sendMessage(reader.result);
       };
     }
   };
