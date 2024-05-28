@@ -5,6 +5,9 @@ export const MESSAGE_SENDER = {
 
 export const MESSAGES_TYPES = {
   TEXT: 'text',
+  IMAGE: 'image',
+  PDF: 'pdf',
+  CSV: 'csv',
   SNIPPET: {
     LINK: 'snippet'
   },
