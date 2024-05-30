@@ -181,6 +181,7 @@ function Sender({
         <label htmlFor="fileInput" className="rcw-file-btn">
             <img src={paperclip} alt="" />
         </label>
+          {selectedFile && <img src={selectedFile} alt="image-preview" style={{ width: '100px', height: '100px' }}/>}
         <div className={cn('rcw-new-message', {
             'rcw-message-disable': disabledInput,
           })
