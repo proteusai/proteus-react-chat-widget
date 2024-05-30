@@ -14,8 +14,7 @@
     "start": "webpack serve --config webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.prod.js",
     "test": "jest --coverage",
-    "package-build": "yarn run build",
-    "package-publish": "yarn publish",
+    "deploy": "yarn build && yarn publish",
     "package-local": "yarn run build && yarn pack"
   },
   "keywords": [
