@@ -8,6 +8,8 @@ import { getCaretIndex, isFirefox, updateCaret, insertNodeAtCaret, getSelection 
 const send = require('../../../../../../../assets/send-icon.svg') as string;
 const paperclip = require('../../../../../../../assets/paperclip.svg') as string;
 const smiley = require('../../../../../../../assets/smiley.svg') as string;
+const csvIcon = require('../../../../../../../assets/csv.svg') as string;
+const fileIcon = require('../../../../../../../assets/file.svg') as string;
 const brRegex = /<br>/g;
 
 import './style.scss';
@@ -59,14 +61,14 @@ function Sender({
       content: '',
       attachments: [] as unknown,
     }
-    if(el.innerHTML && selectedFile) {
+    if(el.innerHTML && selectedFile.value) {
       messageToSend.type = MESSAGES_TYPES.TEXT
-      messageToSend.content = el.innerHTML
+      messageToSend.content = el.innerHTML      
       messageToSend.attachments = [{ 
-        type: MESSAGES_TYPES.IMAGE,
-        content: selectedFile,
+        type: selectedFile.type,
+        content: selectedFile.value,
       }]
-    } else if (el.innerHTML && !selectedFile) {
+    } else if (el.innerHTML && !selectedFile.value) {
       messageToSend.type = MESSAGES_TYPES.TEXT
       messageToSend.content = el.innerHTML
     }
@@ -76,6 +78,7 @@ function Sender({
   
       setPlaceholderText(placeholder);
       setSelectedFile(null);
+      
     }
   }
 
@@ -158,11 +161,18 @@ function Sender({
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        setSelectedFile(reader.result);
+        setSelectedFile({value: reader.result, name: file.name, type: file.type});        
         setPlaceholderText('Add a message instruction for the file');
       };
     }
   };
+
+  const getIcon = () => (
+    selectedFile?.type?.substring(0, 5) === 'image' ?
+      <img src={selectedFile.value} alt="image-preview" style={{ width: '100px', height: '100px' }}/>
+    : selectedFile?.type === 'text/csv' ? <img src={csvIcon} style={{ width: '100px', height: '100px' }} alt={selectedFile.name} />
+    : selectedFile?.value ? <img src={fileIcon} style={{ width: '100px', height: '100px' }} alt={selectedFile.name} /> : null
+  );
   
   return (
     <>
@@ -172,7 +182,7 @@ function Sender({
         </button> */}
         <input
           type="file"
-          accept="image/*"
+          accept="image/*, .csv, .xls, .xlsx, .txt, .pdf"
           onChange={handleImageChange}
           style={{ display: 'none' }}
           id="fileInput"
@@ -181,7 +191,7 @@ function Sender({
         <label htmlFor="fileInput" className="rcw-file-btn">
             <img src={paperclip} alt="" />
         </label>
-          {selectedFile && <img src={selectedFile} alt="image-preview" style={{ width: '100px', height: '100px' }}/>}
+          {getIcon()}
         <div className={cn('rcw-new-message', {
             'rcw-message-disable': disabledInput,
           })
