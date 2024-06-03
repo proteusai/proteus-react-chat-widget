@@ -61,14 +61,14 @@ function Sender({
       content: '',
       attachments: [] as unknown,
     }
-    if(el.innerHTML && selectedFile.value) {
+    if(el.innerHTML && selectedFile?.value) {
       messageToSend.type = MESSAGES_TYPES.TEXT
       messageToSend.content = el.innerHTML      
       messageToSend.attachments = [{ 
         type: selectedFile.type,
         content: selectedFile.value,
       }]
-    } else if (el.innerHTML && !selectedFile.value) {
+    } else if (el.innerHTML && !selectedFile?.value) {
       messageToSend.type = MESSAGES_TYPES.TEXT
       messageToSend.content = el.innerHTML
     }
