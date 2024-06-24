@@ -108,10 +108,10 @@ function WidgetLayout({
     document.documentElement.style.setProperty('--secondary-text-color', secondaryTextColor || '#F2F2F7'); // text color for user sent message bubble
     document.documentElement.style.setProperty('--display-position', displayPosition || POSITION.right); // text color for user sent message bubble
     if (theme === 'black' || theme === 'default') {
-      document.documentElement.style.setProperty('--theme', '#1A202C'); // theme color black/white
+      document.documentElement.style.setProperty('--theme', '#1A202C'); // theme color black
       document.documentElement.style.setProperty('--theme-text-color', '#fff'); // theme text color white
     } else {
-      document.documentElement.style.setProperty('--theme', theme || '#fff'); // theme color black/white
+      document.documentElement.style.setProperty('--theme', theme || '#fff'); // theme color white
       document.documentElement.style.setProperty('--theme-text-color', '#000'); // theme text color black
     }
 

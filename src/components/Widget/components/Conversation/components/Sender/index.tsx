@@ -6,6 +6,7 @@ import { GlobalState } from 'src/store/types';
 
 import { getCaretIndex, isFirefox, updateCaret, insertNodeAtCaret, getSelection } from '../../../../../../utils/contentEditable'
 const send = require('../../../../../../../assets/send-icon.svg') as string;
+const sendDark = require('../../../../../../../assets/send-icon-3.svg') as string;
 const paperclip = require('../../../../../../../assets/paperclip.svg') as string;
 const smiley = require('../../../../../../../assets/smiley.svg') as string;
 const csvIcon = require('../../../../../../../assets/csv.svg') as string;
@@ -173,7 +174,7 @@ function Sender({
     : selectedFile?.type === 'text/csv' ? <img src={csvIcon} style={{ width: '100px', height: '100px' }} alt={selectedFile.name} />
     : selectedFile?.value ? <img src={fileIcon} style={{ width: '100px', height: '100px' }} alt={selectedFile.name} /> : null
   );
-  
+  const theme = document.documentElement.style.getPropertyValue('--theme');
   return (
     <>
       <div ref={refContainer} className={cn("rcw-sender", {'rcw-message-disable': disabledInput,})}>
@@ -209,9 +210,9 @@ function Sender({
             onKeyDown={handlerOnKeyDown}
           />
         </div>
-        <button type="submit" className="rcw-send" onClick={handlerSendMessage}>
-          <img src={send} className="rcw-send-icon" alt={buttonAlt} />
-        </button>
+        <div className="rcw-send" onClick={handlerSendMessage}>
+          <img src={theme === '#1A202C' ? send : sendDark} className="rcw-send-icon" alt={buttonAlt} />
+        </div>
       </div>
       {showDisclaimer && 
       <p className='rcw-disclaimer-text'>{disclaimerText}
