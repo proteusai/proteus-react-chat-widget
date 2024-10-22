@@ -1,4 +1,4 @@
-# Proteus React Chat Widget
+# ProteusAi React Chat Widget
 
 A simplified version of [React chat widget by Wolox](https://www.npmjs.com/package/react-chat-widget)
 ## Features

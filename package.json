@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/waleCloud/react-chat-widget.git"
+    "url": "git+ssh://git@github.com:agnos-cloud/proteus-react-chat-widget.git"
   },
-  "author": "Wale Ayandian",
+  "author": "Wale Ayandiran",
   "license": "MIT",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -118,7 +118,7 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/waleCloud/react-chat-widget/issues"
+    "url": "https://github.com/agnos-cloud/proteus-react-chat-widget/issues"
   },
-  "homepage": "https://github.com/waleCloud/react-chat-widget#readme"
+  "homepage": "https://github.com/agnos-cloud/proteus-react-chat-widget#readme"
 }

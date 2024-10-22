@@ -22,7 +22,7 @@ If you have a new feature you want to add or a bug you think you can fix, follow
 To dev this project and see changes on the fly, simply use the script
 
 ```bash
-npm start
+yarn start
 ```
 
 ##  Testing
@@ -30,7 +30,7 @@ npm start
 Your new feature **must** be tested with the proper tools. In this project, we use Jest and Enzyme. Once your tests are written, run:
 
 ```bash
-npm run test
+yarn run test
 ```
 All new tests needs to be pass in order to approve the PR.
 

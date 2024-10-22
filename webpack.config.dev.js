@@ -17,7 +17,6 @@ module.exports = {
     compress: false,
     host: '0.0.0.0',
     port: 3002,
-    hot: true
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']

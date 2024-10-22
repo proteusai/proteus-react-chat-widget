@@ -118,6 +118,10 @@ const ConnectedWidget: React.FC<Props> = ({
   disclaimerText,
   disclaimerLearnMoreUrl,
 }) => {
+  if (!showDisclaimer) showDisclaimer = true;
+  if (!disclaimerText.trim() || disclaimerText.trim() == "") {
+    disclaimerText = 'AI-generated answer. Always double-check important facts.';
+  }
   return (
     <Provider store={store}>
       <Widget

@@ -45,6 +45,9 @@ export default class App extends Component {
         emojis={true}
         weburl='*'
         displayPosition='right'
+        disclaimerText=' '
+        showDisclaimer={false}
+        disclaimerLearnMoreUrl='https://www.useproteus.ai/terms'
       />
     );
   }
