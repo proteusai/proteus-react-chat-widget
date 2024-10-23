@@ -46,7 +46,7 @@ export default class App extends Component {
         weburl='*'
         displayPosition='right'
         disclaimerText=' '
-        showDisclaimer={false}
+        showDisclaimer={true}
         disclaimerLearnMoreUrl='https://www.useproteus.ai/terms'
       />
     );
