@@ -33,6 +33,9 @@ type Props = {
 function Sender({
   sendMessage, placeholder, disabledInput, autofocus, onTextInputChange, buttonAlt, onPressEmoji,
   onChangeSize, showDisclaimer, disclaimerText, disclaimerLearnMoreUrl, }: Props, ref) {
+  if (disclaimerText === undefined || disclaimerText === "") {
+    disclaimerText = 'AI-generated answer. Always double-check important facts.';
+  }
   const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
   const inputRef = useRef<HTMLDivElement>(null!);
   const refContainer = useRef<HTMLDivElement>(null);
